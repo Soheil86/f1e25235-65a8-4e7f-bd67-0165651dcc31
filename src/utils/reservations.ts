@@ -50,7 +50,7 @@ export const reservations: Reservation[] = [
 		state: 'available',
 	},
 ]
-type Reservation = {
+export type Reservation = {
 	spotId: number
 	entries: string[]
 	state: string

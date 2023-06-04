@@ -49,7 +49,6 @@ export const spots: Spot[] = [
 	},
 ]
 
-
 type Spot = {
 	number: number
 	occupied: boolean
