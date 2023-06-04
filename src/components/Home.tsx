@@ -19,6 +19,17 @@ const Home = () => {
 		setReservationState(newState)
 	}
 
+	const exitSlot = (spotId: number) => {
+		const slotIndex = reservationState.findIndex(
+			(reservation) => reservation.spotId == spotId
+		)
+		const newState = reservationState.map((reservation, index) => {
+			if (index == slotIndex) reservation.state = 'available'
+			return reservation
+		})
+		setReservationState(newState)
+	}
+
 	return (
 		<div className='px-10 flex gap-x-10 pt-14'>
 			<div>
@@ -50,9 +61,41 @@ const Home = () => {
 										: 'bg-red-500'
 								}`}
 							></div>
-							<button className='bg-gray-200 rounded-sm py-1 px-4'>Exit</button>
+							<button
+								onClick={() => exitSlot(reservation.spotId)}
+								className='bg-gray-200 rounded-md py-1 px-4'
+							>
+								Exit
+							</button>
 						</div>
 					))}
+				</div>
+
+				<div className='mt-6 shadow-md my-10 px-4 py-6'>
+					<h1 className='text-center text-3xl mb-10'>
+						Reservation History Chart
+					</h1>
+					<div className='flex justify-between'>
+						{reservationState.map((reservation) => (
+							<div>
+								<p>Spot: # {reservation.spotId}</p>
+								{reservation.entries?.map((plateNumber, index) => {
+									const isLast = reservation.entries.length == index + 1
+									return (
+										<p
+											className={`px-1 py-1 border ${
+												isLast && reservation.state == 'available'
+													? 'border-green-500'
+													: 'border-red-500'
+											}`}
+										>
+											Plate Nr:{plateNumber}
+										</p>
+									)
+								})}
+							</div>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>
