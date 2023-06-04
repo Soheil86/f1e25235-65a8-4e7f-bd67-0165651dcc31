@@ -1,7 +1,5 @@
-import './App.css'
-
 function App() {
-	return <div>Code challange</div>
+	return <div className='w-screen h-screen bg-red-300'>Code challange</div>
 }
 
 export default App
