@@ -71,8 +71,8 @@ const Home = () => {
 					))}
 				</div>
 
-				<div className='mt-6 shadow-md my-10 px-4 py-6'>
-					<h1 className='text-center text-3xl mb-10'>
+				<div className='mt-20 px-8 py-8 border border-gray-300 rounded-md '>
+					<h1 className='text-center text-3xl mb-10 '>
 						Reservation History Chart
 					</h1>
 					<div className='flex justify-between'>
@@ -83,7 +83,7 @@ const Home = () => {
 									const isLast = reservation.entries.length == index + 1
 									return (
 										<p
-											className={`px-1 py-1 border ${
+											className={`px-1 py-1 my-4 border ${
 												isLast && reservation.state == 'available'
 													? 'border-green-500'
 													: 'border-red-500'
